@@ -30,6 +30,13 @@ func main() {
 	http.HandleFunc("/home", func(w http.ResponseWriter, r *http.Request) {
 		http.ServeFile(w, r, "home.html")
 	})
+	
+	/*
+		Listen to any requests on TCP port 3000 and respond back
+		nil is the null in go
+		here we are passing nil to tell go that use the default handler
+		handler -> processed http request and sends a reponse back.
+	*/
 
 	http.ListenAndServe(":3000", nil)
 
