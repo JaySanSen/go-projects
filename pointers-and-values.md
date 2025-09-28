@@ -38,3 +38,31 @@ if the value of a changes to 27 then *b will give 27 since b hold a reference or
 
 - Values hold copies
 - Pointers don't hold their own copies but rather point to data held by another variable.
+
+```
+package main
+
+import "fmt"
+
+func main() {
+	a := 42
+	b := &a
+	fmt.Println(a, *b)
+
+	c := &a
+	*c = 27
+	fmt.Println(a, *b, *c)
+}
+
+
+Output
+42 42
+27 27 27
+
+Program exited.
+```
+
+
+> if we need to predeclare a pointer we can use
+> c = new(int)  -> this is pretty rare to use
+> built in new function creates pointer to anonymous variable
