@@ -75,4 +75,54 @@
   - specifying the type is not required as the compiler will infer the type
 
   #### Alternate variable declaration syntax
-  
+  - this is very common and is the most used way of declaring variables
+  > myName := "Go User"   // short declaration syntax
+
+
+
+  #### Constants
+  > const a = 42   -> implicitly typed constant
+
+- another thing to note here is that the data type is not mentioned.
+  so the compiler will take it as what it needs it to be at that particular execution which may be an integer or a floating point or a unsigned int.
+
+
+  > const b string = "Hello world"   -> explicitly typed constant
+  > const c = a  -> assign one constant to another
+
+- if you want to declare multiple constants at one time
+```
+const (
+  d = true
+  e = 3.14
+)
+
+```
+
+- expressions are also allowed
+> const c = 2 * 5
+> const d = "Hello" + " world"
+- expressions are allowed as long as it is calculable/must be able to be evaluated at compile time.
+
+> const e = someFunction()   -> THIS IS NOT ALLOWED
+
+
+
+#### some additional information on short hand declaration
+-  Inside a function, the := short assignment statement can be used in place of a var declaration with implicit type.
+- Outside a function, every statement begins with a keyword (var, func, and so on) and so the := construct is not available. 
+
+```
+package main
+
+import "fmt"
+
+func main() {
+	var i, j int = 1, 2
+	k := 3
+	c, python, java := true, false, "no!"
+
+	fmt.Println(i, j, k, c, python, java)
+}
+
+```
