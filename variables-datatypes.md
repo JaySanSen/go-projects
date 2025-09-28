@@ -48,3 +48,31 @@
   #### Booleans
   - true
   - false
+  > Booleans are first class citizens in GO which mean unlike other programming languages where numbers can sometimes be used as true or false for example 0 is considered false, will not go through in GO. Booleans must be used where booleans are required. There is no truthy and falsy values like in javascript
+
+
+  #### Errors
+  - The error built in interface type is the conventional interface for representing an error condition, with nil value (which is the null in GO) representing no error.
+  - Error is a first class citizen
+  - Unlike C# or Java where we can throw or raise exceptions, there is no such mechanism in GO. Simply return an error when things go wrong.
+  ```
+  type error interface{
+    Error() string
+  }
+  ```
+
+
+  #### Declaring Variables
+  > var myVariable string
+  - syntax might be awkward if coming from other languages like C# or Java
+  - this is actually an optimization made for the compiler
+  - anytime in go if we don't define a value for the variable then it is going to assign what is called a zero value
+    - the zero value of a string is an empty string.
+    - the zero value of a number is 0
+    - the zero value of a boolean is false
+  > var myName string = "GO User"
+  > var myName = "GO User" // initialize with inferred type
+  - specifying the type is not required as the compiler will infer the type
+
+  #### Alternate variable declaration syntax
+  
