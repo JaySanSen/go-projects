@@ -63,6 +63,6 @@ Program exited.
 ```
 
 
-> if we need to predeclare a pointer we can use
+- if we need to predeclare a pointer we can use
 > c = new(int)  -> this is pretty rare to use
-> built in new function creates pointer to anonymous variable
+- built in new function creates pointer to anonymous variable
