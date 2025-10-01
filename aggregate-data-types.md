@@ -38,3 +38,5 @@ Arrays are comparable
 - to create a slice we need to specify a starting point and a length
 - slices don't contain their own data
 - slices are reference types and they refer to data stored somewhere else
+- so if the parent array from which the slice is created is updated then the slice will reflect that changed value
+- vice versa is also true if the slice is updated then the array will reflect it
