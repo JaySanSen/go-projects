@@ -40,3 +40,4 @@ Arrays are comparable
 - slices are reference types and they refer to data stored somewhere else
 - so if the parent array from which the slice is created is updated then the slice will reflect that changed value
 - vice versa is also true if the slice is updated then the array will reflect it
+- a benefit of this referential nature of the slice is that it allows to make the slice a dynamic data type whic means the size of the slice can grow over time
