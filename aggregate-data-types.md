@@ -61,12 +61,25 @@ fmt.Println(s)     // [1, 99, 3]
 
 
 
+```
+
+
+#### Adding data to the slice
+- append is a built in method which is used to add elements to a slice by providing comma separated values.
+```
 s = append(s, 5, 10, 15)      // add elements to the slice
-append is a built in method which is used to add elements to a slice by providing comma separated values.
 fmt.Println(s)     // [1, 99, 3, 5, 10, 15]
-so why do we do s = append(s ...)
-so append does not modify the slice it returns a new slice so we assign it back to original slice
+```
+- so why do we do s = append(s ...)
+- so append does not modify the slice it returns a new slice so we assign it back to original slice
 
 
-
+#### Delete data from a slice
+- There is a built in delete method BUT THIS DOES NOT work on slices
+- Use standard library instead
+```
+s = slices.delete(s, startingIndex, endingIndex)
+s = slices.delete(s, 1, 3)  // will remove 99(index 1) and 3(index 2 and stop before index 3) from [1, 99, 3, 5, 10, 15]   final output [1, 5, 10, 15]
+startingIndex -> initial index we want to remove -> which mean index to start removing elements from
+endingIndex -> index up to which it should delete but not including this end index
 ```
