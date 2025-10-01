@@ -41,3 +41,32 @@ Arrays are comparable
 - so if the parent array from which the slice is created is updated then the slice will reflect that changed value
 - vice versa is also true if the slice is updated then the array will reflect it
 - a benefit of this referential nature of the slice is that it allows to make the slice a dynamic data type whic means the size of the slice can grow over time
+
+
+```
+var sliceExample []int
+signature is similar to array but just that we don't specify the size
+
+fmt.Println(sliceExample)    -> output: [] (nil)
+
+Why is the output nil
+
+So nil is the zero value for un-initialized pointers and reference types like how 0 is the zero value for int.
+since slice is a reference type it prints nil since it is currently uninitialized
+
+
+var s []int{1, 2, 3}   //slice literal
+s[1] = 99
+fmt.Println(s)     // [1, 99, 3]
+
+
+
+s = append(s, 5, 10, 15)      // add elements to the slice
+append is a built in method which is used to add elements to a slice by providing comma separated values.
+fmt.Println(s)     // [1, 99, 3, 5, 10, 15]
+so why do we do s = append(s ...)
+so append does not modify the slice it returns a new slice so we assign it back to original slice
+
+
+
+```
