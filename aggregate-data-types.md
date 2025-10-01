@@ -18,4 +18,23 @@ fmt.Println(arr[1])
 
 arr[1] = 100    //update value
 
+fmt.Println(len(arr))   //3 -> length of array
+
+
+arr := [3]string{"foo", "bar", "foobar"}
+arr2 := arr    -> arrays are copied by value
+so they are independent of each other
+arr[0] = "baz"
+fmt.Println(arr)     -> ["baz", "bar", "foobar"]
+fmt.Println(arr2)    -> ["foo", "bar", "foobar"]
+
+arr == arr2 -> false  -> GO checks value by value and returns boolean result.
+Arrays are comparable
 ```
+
+
+### Slices
+- slices are a subset of an array
+- to create a slice we need to specify a starting point and a length
+- slices don't contain their own data
+- slices are reference types and they refer to data stored somewhere else
