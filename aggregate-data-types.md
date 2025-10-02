@@ -30,6 +30,16 @@ fmt.Println(arr2)    -> ["foo", "bar", "foobar"]
 
 arr == arr2 -> false  -> GO checks value by value and returns boolean result.
 Arrays are comparable
+
+
+
+	employeeIds := [3]int{1, 2, 3}
+	backUpEmployeeIds := employeeIds
+	employeeIds[1] = 2000
+	fmt.Println(employeeIds)
+	fmt.Println(backUpEmployeeIds)
+  [1 2000 3]
+  [1 2 3]
 ```
 
 
@@ -82,4 +92,46 @@ s = slices.delete(s, startingIndex, endingIndex)
 s = slices.delete(s, 1, 3)  // will remove 99(index 1) and 3(index 2 and stop before index 3) from [1, 99, 3, 5, 10, 15]   final output [1, 5, 10, 15]
 startingIndex -> initial index we want to remove -> which mean index to start removing elements from
 endingIndex -> index up to which it should delete but not including this end index
+```
+- slices are copied by reference
+```
+s := []string{"foo", "bar", "baz"}
+s2 := s
+
+s[0], s2[2] = "qux", "fred"
+fmt.Println(s, s2)
+["qux", "bar", "fred"] ["qux", "bar", "fred"]
+
+s == s2    -> this is will give a compile time error - slices are not comparable because they are reference types
+if there is a requirement to compare use the standard library
+
+
+to clone as a copy use the standard library and clone using slices.Clone
+
+
+
+	employeeIds := []int{1, 2, 3}
+	backUpEmployeeIds := employeeIds
+	employeeIds[1] = 2000
+	fmt.Println(employeeIds)
+	fmt.Println(backUpEmployeeIds)
+  [1 2000 3]
+  [1 2000 3]
+```
+
+
+
+
+### Maps
+- Data structure that stores a collection of unordered key-value pairs
+#### Key Characteristics of Go Maps:
+- Key-Value Pairs: Maps store data as pairs, where each unique key is associated with a specific value.
+- Unique Keys: Keys within a map must be unique and of a comparable type (e.g., int, string, float64, structs where all fields are comparable). Slices and non-comparable arrays/structs cannot be used as keys. 
+- Flexible Values: Values can be of any type, including other maps, pointers, or reference types. 
+- Unordered: The order of elements when iterating over a map is not guaranteed and can vary between iterations.
+- References to Hash Tables: Maps are reference types; passing them around is efficient as it only passes a reference to the underlying hash table.
+- map is a reference type
+```
+var m map[string]int      // declare map with key of type string an value of int
+fmt.Println(m)
 ```
