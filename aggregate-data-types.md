@@ -131,7 +131,47 @@ to clone as a copy use the standard library and clone using slices.Clone
 - Unordered: The order of elements when iterating over a map is not guaranteed and can vary between iterations.
 - References to Hash Tables: Maps are reference types; passing them around is efficient as it only passes a reference to the underlying hash table.
 - map is a reference type
+- unlike arrays and slice where order is preserved maps don't preserve the order
 ```
 var m map[string]int      // declare map with key of type string an value of int
-fmt.Println(m)
+fmt.Println(m)   // will return map[] which is nil because map is a reference type
+
+
+m = map[string]int{"foo":1, "bar":2}
+
+
+fmt.Println(m["foo"])     -> lookup values in a map
+m["bar"] = 100            -> update values in a map
+
+delete(m,"foo")           -> remove entry in a map
+
+
+m["new"] = 500            -> add values to the map using keys which are not in the map yet, similar to update syntax
+
+```
+#### What happens when you try to fetch a key value pair that is not in the map
+- the query always returns a result
+	- this means that if the key is not present in the map the zero value for that particular value which they key was pointing to is returned
+
+```
+	sampleMap := map[string]int{"foo": 1, "bar": 2}
+	delete(sampleMap, "foo")
+	fmt.Println(sampleMap)
+	fmt.Println(sampleMap["foo"])
+
+
+  map[bar:2]
+  0        -> 0 is being printed here since the value is of type integer for this map and the zero value of integer is 0
+
+
+
+
+	sampleMap := map[string]bool{"foo": true, "bar": false}
+	delete(sampleMap, "foo")
+	fmt.Println(sampleMap)
+	fmt.Println(sampleMap["foo"])
+	 
+
+  map[bar:false]
+  false     -> here false is being printed since th value is of type bool and false is the zero value of bool
 ```
