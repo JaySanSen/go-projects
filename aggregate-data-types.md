@@ -51,6 +51,7 @@ Arrays are comparable
 - so if the parent array from which the slice is created is updated then the slice will reflect that changed value
 - vice versa is also true if the slice is updated then the array will reflect it
 - a benefit of this referential nature of the slice is that it allows to make the slice a dynamic data type whic means the size of the slice can grow over time
+- slices are copied by reference, to clone the values use slices.Clone
 
 
 ```
@@ -132,6 +133,7 @@ to clone as a copy use the standard library and clone using slices.Clone
 - References to Hash Tables: Maps are reference types; passing them around is efficient as it only passes a reference to the underlying hash table.
 - map is a reference type
 - unlike arrays and slice where order is preserved maps don't preserve the order
+- maps are copied by reference similar to slices, to copy by value use maps.Clone to clone
 ```
 var m map[string]int      // declare map with key of type string an value of int
 fmt.Println(m)   // will return map[] which is nil because map is a reference type
@@ -174,4 +176,34 @@ m["new"] = 500            -> add values to the map using keys which are not in t
 
   map[bar:false]
   false     -> here false is being printed since th value is of type bool and false is the zero value of bool
+```
+#### The comma ok syntax
+- another way to query the map where we ask for a boolean along with the map query
+  - boolean will be true if the value is returned from the map
+  - boolean will be false if the map does not contain the key value pair
+
+```
+	sampleMap := map[string]bool{"foo": true, "bar": false}
+	delete(sampleMap, "foo")
+	fmt.Println(sampleMap)
+	v, ok := sampleMap["foo"]
+	fmt.Println(v)
+	fmt.Println(ok)
+	map[bar:false]
+	false
+	false
+
+
+
+	sampleMap := map[string]int{"foo": 1, "bar": 200}
+	delete(sampleMap, "foo")
+	fmt.Println(sampleMap)
+	v,ok := sampleMap["foo"]
+	fmt.Println(v);
+	fmt.Println(ok);
+
+	map[bar:200]
+	0
+	false
+
 ```
